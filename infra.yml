@@ -1,0 +1,210 @@
+profiles:
+  puppetmaster:
+  all-rbdkey:
+    steps:
+      -
+        step: 1
+        roles:
+          - cloud
+          - cloud::database::sql
+          - cloud::database::nosql
+          - cloud::messaging
+          - cloud::cache
+          - cloud::storage::rbd::monitor
+          - cloud::storage::rbd::key
+      -
+        step: 2
+        roles:
+          - cloud::loadbalancer
+          - cloud::storage::rbd::osd
+      -
+        step: 3
+        roles:
+          - cloud::identity
+          - cloud::storage::rbd::pools
+      -
+        step: 4
+        roles:
+          - cloud::compute::api
+          - cloud::compute::cert
+          - cloud::compute::conductor
+          - cloud::compute::consoleauth
+          - cloud::compute::consoleproxy
+          - cloud::compute::hypervisor
+          - cloud::compute::scheduler
+          - cloud::volume::api
+          - cloud::volume::backup
+          - cloud::volume::scheduler
+          - cloud::volume::storage
+          - cloud::image::api
+          - cloud::image::registry
+          - cloud::telemetry::api
+          - cloud::telemetry::collector
+          - cloud::telemetry::alarmevaluator
+          - cloud::telemetry::alarmnotifier
+          - cloud::network::controller
+          - cloud::orchestration::api
+      -
+        step: 5
+        roles:
+          - cloud::dashboard
+          - cloud::network::dhcp
+          - cloud::network::metadata
+          - cloud::network::lbaas
+    serverspec_config:
+      ks_user_name: ks_admin_tenant
+      ks_user_password: ks_admin_password
+      ks_user_name: ks_admin_tenant
+      vip_public: vip_public_fqdn
+      virt_type: libvirt_type
+      neutron_password: ks_neutron_password
+      neutron_endpoint: vip_public_fqdn
+      neutron_protocol: ks_neutron_admin_proto
+      neutron_type_drivers: neutron_type_drivers
+      neutron_mechanism_drivers: neutron_mechanism_drivers
+      neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
+      neutron_firewall_driver: neutron_firewall_driver
+
+  all-l3:
+    steps:
+      -
+        step: 1
+        roles:
+          - cloud
+          - cloud::database::sql
+          - cloud::database::nosql
+          - cloud::messaging
+          - cloud::cache
+          - cloud::storage::rbd::monitor
+      -
+        step: 2
+        roles:
+          - cloud::loadbalancer
+      -
+        step: 3
+        roles:
+          - cloud::identity
+          - cloud::storage::rbd::pools
+      -
+        step: 4
+        roles:
+          - cloud::compute::api
+          - cloud::compute::cert
+          - cloud::compute::conductor
+          - cloud::compute::consoleauth
+          - cloud::compute::consoleproxy
+          - cloud::compute::hypervisor
+          - cloud::compute::scheduler
+          - cloud::volume::api
+          - cloud::volume::backup
+          - cloud::volume::scheduler
+          - cloud::volume::storage
+          - cloud::image::api
+          - cloud::image::registry
+          - cloud::telemetry::api
+          - cloud::telemetry::collector
+          - cloud::telemetry::alarmevaluator
+          - cloud::telemetry::alarmnotifier
+          - cloud::network::controller
+          - cloud::orchestration::api
+      -
+        step: 5
+        roles:
+          - cloud::dashboard
+          - cloud::network::dhcp
+          - cloud::network::metadata
+          - cloud::network::lbaas
+          - cloud::network::l3
+    serverspec_config:
+      ks_user_name: ks_admin_tenant
+      ks_user_password: ks_admin_password
+      ks_user_name: ks_admin_tenant
+      vip_public: vip_public_fqdn
+      virt_type: libvirt_type
+      neutron_password: ks_neutron_password
+      neutron_endpoint: vip_public_fqdn
+      neutron_protocol: ks_neutron_admin_proto
+      neutron_type_drivers: neutron_type_drivers
+      neutron_mechanism_drivers: neutron_mechanism_drivers
+      neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
+      neutron_firewall_driver: neutron_firewall_driver
+
+  all-osd:
+    steps:
+      -
+        step: 1
+        roles:
+          - cloud
+          - cloud::database::sql
+          - cloud::database::nosql
+          - cloud::messaging
+          - cloud::cache
+          - cloud::storage::rbd::monitor
+      -
+        step: 2
+        roles:
+          - cloud::loadbalancer
+          - cloud::storage::rbd::osd
+      -
+        step: 3
+        roles:
+          - cloud::identity
+          - cloud::storage::rbd::pools
+      -
+        step: 4
+        roles:
+          - cloud::compute::api
+          - cloud::compute::cert
+          - cloud::compute::conductor
+          - cloud::compute::consoleauth
+          - cloud::compute::consoleproxy
+          - cloud::compute::hypervisor
+          - cloud::compute::scheduler
+          - cloud::volume::api
+          - cloud::volume::backup
+          - cloud::volume::scheduler
+          - cloud::volume::storage
+          - cloud::image::api
+          - cloud::image::registry
+          - cloud::telemetry::api
+          - cloud::telemetry::collector
+          - cloud::telemetry::alarmevaluator
+          - cloud::telemetry::alarmnotifier
+          - cloud::network::controller
+          - cloud::orchestration::api
+      -
+        step: 5
+        roles:
+          - cloud::dashboard
+          - cloud::network::dhcp
+          - cloud::network::metadata
+          - cloud::network::lbaas
+    serverspec_config:
+      ks_user_name: ks_admin_tenant
+      ks_user_password: ks_admin_password
+      ks_user_name: ks_admin_tenant
+      vip_public: vip_public_fqdn
+      virt_type: libvirt_type
+      neutron_password: ks_neutron_password
+      neutron_endpoint: vip_public_fqdn
+      neutron_protocol: ks_neutron_admin_proto
+      neutron_type_drivers: neutron_type_drivers
+      neutron_mechanism_drivers: neutron_mechanism_drivers
+      neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
+      neutron_firewall_driver: neutron_firewall_driver
+
+ordered_profiles:
+  - all-rbdkey
+  - all-osd
+  - all-l3
+
+serverspec:
+  cloud::database::sql: database
+  cloud::messaging: messaging
+  cloud::cache: cache
+  cloud::storage::rbd::monitor: storage_controller
+  cloud::identity: identity
+  cloud::network::dhcp: network
+  cloud::loadbalancer: lb
+  cloud::storage::rbd::osd: storage_node
+  cloud::compute::hypervisor: compute

@@ -1,0 +1,37 @@
+---
+{% for host in hosts %}
+{% if profiles[host['profile']]['min_step'] %}
+{% if profiles[host['profile']]['min_step'] <= step %}
+{{ host.name }}.{{ config.domain }}:
+{% if host.ip %}
+  :server_ip: {{ host.ip }}
+{% endif %}
+  :hostname: {{ host.name }}
+  :roles:
+    - base
+
+{% for entry in profiles[host['profile']]['steps'] %}
+{% if entry.step <= step %}
+{% if entry.roles %}
+{% for role in entry.roles %}
+{% if serverspec[role] %}
+    - {{ serverspec[role] }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endfor %}
+
+{% for config_name in profiles[host['profile']]['serverspec_config'] %}
+{% if config[profiles[host['profile']]['serverspec_config'][config_name]] %}
+  :{{ config_name }}: {{ config[profiles[host['profile']]['serverspec_config'][config_name]] }}
+{% endif %}
+{% endfor %}
+
+{% endif %}
+{% endif %}
+{% endfor %}
+
+# Local variables:
+# mode: yaml
+# End:

@@ -1,0 +1,8 @@
+# {{ host }}
+{% for h in hosts %}
+{% if h.name == host %}
+{% for conf in h.config %}
+{{ conf }}: {{ h.config[conf] }}
+{% endfor %}
+{% endif %}
+{% endfor %}
