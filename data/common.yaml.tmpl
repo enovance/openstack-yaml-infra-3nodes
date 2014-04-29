@@ -11,9 +11,7 @@ root_password: {{ config.root_password }}
 
 site_domain: {{ config.domain }}
 region: {{ config.region }}
-dns_ips:
-{% for ip in config.dns_ips %}  - {{ ip }}
-{% endfor %}
+dns_ips: {{ config.dns_ips }}
 
 ntp_servers:
 {% for server in config.ntp_servers %}  - {{ server }}
