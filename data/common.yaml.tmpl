@@ -9,7 +9,7 @@ cloud::ntp_servers: "%{hiera('ntp_servers')}"
 # root / enovance
 root_password: {{ config.root_password }}
 
-site_domain: {{ config.site_domain }}
+site_domain: {{ config.domain }}
 region: {{ config.region }}
 dns_ips:
 {% for ip in config.dns_ips %}  - {{ ip }}
