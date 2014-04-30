@@ -128,7 +128,7 @@ ceph_osd_devices:
 {% for disk in config.ceph_osd_devices %}  - {{ disk }}
 {% endfor %}
 ceph_names:
-{% for host in hosts %}{% if host.profile != 'puppetmaster' %}  - '{{ host.ip }}:11211'{% endif %}
+{% for host in hosts %}{% if host.profile != 'puppetmaster' %}  - {{ host.name }}{% endif %}
 {% endfor %}
 cinder_rbd_pool: {{ config.cinder_rbd_pool }}
 cinder_rbd_user: {{ config.cinder_rbd_user }}
