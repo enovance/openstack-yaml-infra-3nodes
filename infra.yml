@@ -53,7 +53,7 @@ profiles:
     serverspec_config:
       ks_user_name: ks_admin_tenant
       ks_user_password: ks_admin_password
-      ks_user_name: ks_admin_tenant
+      ks_tenant_name: ks_admin_tenant
       vip_public: vip_public_fqdn
       virt_type: libvirt_type
       neutron_password: ks_neutron_password
@@ -116,7 +116,7 @@ profiles:
     serverspec_config:
       ks_user_name: ks_admin_tenant
       ks_user_password: ks_admin_password
-      ks_user_name: ks_admin_tenant
+      ks_tenant_name: ks_admin_tenant
       vip_public: vip_public_fqdn
       virt_type: libvirt_type
       neutron_password: ks_neutron_password
@@ -179,7 +179,7 @@ profiles:
     serverspec_config:
       ks_user_name: ks_admin_tenant
       ks_user_password: ks_admin_password
-      ks_user_name: ks_admin_tenant
+      ks_tenant_name: ks_admin_tenant
       vip_public: vip_public_fqdn
       virt_type: libvirt_type
       neutron_password: ks_neutron_password
