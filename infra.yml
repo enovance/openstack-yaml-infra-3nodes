@@ -5,7 +5,6 @@ profiles:
       -
         step: 1
         roles:
-          - cloud
           - cloud::database::sql
           - cloud::database::nosql
           - cloud::messaging
@@ -70,7 +69,6 @@ profiles:
       -
         step: 1
         roles:
-          - cloud
           - cloud::database::sql
           - cloud::database::nosql
           - cloud::messaging
@@ -134,7 +132,6 @@ profiles:
       -
         step: 1
         roles:
-          - cloud
           - cloud::database::sql
           - cloud::database::nosql
           - cloud::messaging
