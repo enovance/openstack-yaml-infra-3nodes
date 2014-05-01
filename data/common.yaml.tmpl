@@ -62,6 +62,7 @@ galera_next_server:{% for host in config.galera_next_server %}
   {{ host }}: {{ config.galera_next_server[host] }}{% endfor %}
 mysql_root_password: {{ config.mysql_root_password }}
 mysql_sys_maint_password: {{ config.mysql_sys_maint_password }}
+galera_clustercheck_ipaddress: "%{hiera('internal_netif_ip')}"
 galera_clustercheck_dbuser: {{ config.galera_clustercheck_dbuser }}
 galera_clustercheck_dbpassword: {{ config.galera_clustercheck_dbpassword }}
 
