@@ -180,5 +180,8 @@ swift_zone:
 {% for zone in config.swift_zone %}  {{ zone }}: {{ config.swift_zone[zone] }}
 {% endfor %}
 
+# HAproxy
+haproxy_auth: {{ config.haproxy_auth }}
+
 classes:
   - cloud
