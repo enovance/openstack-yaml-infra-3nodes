@@ -15,7 +15,6 @@ ntp_servers:
 {% endfor %}
 
 vip_public_ip: {{ config.vip_public_ip }}
-vip_internal_ip: {{ config.vip_internal_ip }}
 vip_admin_ip: {{ config.vip_admin_ip }}
 
 vip_public_fqdn: {{ config.vip_public_fqdn }}
@@ -55,7 +54,7 @@ db_allowed_hosts:
 mongo_nodes: "%{hiera('mgmt_internal_ips')}"
 
 # MySQL
-galera_ip: "%{hiera('vip_internal_ip')}"
+galera_ip: "%{hiera('vip_public_ip')}"
 galera_master_name: {{ config.galera_master_name }}
 galera_internal_ips: "%{hiera('mgmt_internal_ips')}"
 mysql_root_password: {{ config.mysql_root_password }}
