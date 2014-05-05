@@ -16,6 +16,7 @@ profiles:
         roles:
           - cloud::loadbalancer
           - cloud::storage::rbd::osd
+          - cloud::dashboard
       -
         step: 3
         roles:
@@ -47,7 +48,6 @@ profiles:
       -
         step: 5
         roles:
-          - cloud::dashboard
           - cloud::network::dhcp
           - cloud::network::metadata
           - cloud::network::lbaas
@@ -79,6 +79,7 @@ profiles:
         step: 2
         roles:
           - cloud::loadbalancer
+          - cloud::dashboard
       -
         step: 3
         roles:
@@ -110,7 +111,6 @@ profiles:
       -
         step: 5
         roles:
-          - cloud::dashboard
           - cloud::network::dhcp
           - cloud::network::metadata
           - cloud::network::lbaas
@@ -144,6 +144,7 @@ profiles:
         roles:
           - cloud::loadbalancer
           - cloud::storage::rbd::osd
+          - cloud::dashboard
       -
         step: 3
         roles:
@@ -175,7 +176,6 @@ profiles:
       -
         step: 5
         roles:
-          - cloud::dashboard
           - cloud::network::dhcp
           - cloud::network::metadata
           - cloud::network::lbaas
