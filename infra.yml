@@ -43,6 +43,7 @@ profiles:
           - cloud::telemetry::alarmnotifier
           - cloud::network::controller
           - cloud::orchestration::api
+          - cloud::spof
       -
         step: 5
         roles:
@@ -105,6 +106,7 @@ profiles:
           - cloud::telemetry::alarmnotifier
           - cloud::network::controller
           - cloud::orchestration::api
+          - cloud::spof
       -
         step: 5
         roles:
@@ -169,6 +171,7 @@ profiles:
           - cloud::telemetry::alarmnotifier
           - cloud::network::controller
           - cloud::orchestration::api
+          - cloud::spof
       -
         step: 5
         roles:
