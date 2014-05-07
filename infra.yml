@@ -42,8 +42,7 @@ profiles:
           - cloud::telemetry::collector
           - cloud::telemetry::alarmevaluator
           - cloud::telemetry::alarmnotifier
-          # broken for now https://review.openstack.org/#/c/92702
-          #- cloud::telemetry::notification
+          - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::spof
@@ -107,8 +106,7 @@ profiles:
           - cloud::telemetry::collector
           - cloud::telemetry::alarmevaluator
           - cloud::telemetry::alarmnotifier
-          # broken for now https://review.openstack.org/#/c/92702
-          #- cloud::telemetry::notification
+          - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::spof
@@ -174,8 +172,7 @@ profiles:
           - cloud::telemetry::collector
           - cloud::telemetry::alarmevaluator
           - cloud::telemetry::alarmnotifier
-          # broken for now https://review.openstack.org/#/c/92702
-          #- cloud::telemetry::notification
+          - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::spof
