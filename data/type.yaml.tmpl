@@ -184,6 +184,10 @@ cloud::network::controller::ks_neutron_password: "%{hiera('ks_neutron_password')
 cloud::network::controller::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
 cloud::network::controller::api_eth: "%{hiera('api_eth')}"
 cloud::network::controller::public_cidr: "%{hiera('public_cidr')}"
+cloud::network::controller::nova_url: "http://%{hiera('vip_internal_fqdn')}:8774/v2"
+cloud::network::controller::nova_admin_auth_url: "http://%{hiera('vip_internal_fqdn')}:35357/v2.0"
+cloud::network::controller::nova_admin_password: "%{hiera('ks_nova_password')}"
+cloud::network::controller::nova_region_name: "%{hiera('region')}"
 
 cloud::compute::api::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
 cloud::compute::api::ks_nova_password: "%{hiera('ks_nova_password')}"
