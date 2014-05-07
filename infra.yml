@@ -42,6 +42,7 @@ profiles:
           - cloud::telemetry::collector
           - cloud::telemetry::alarmevaluator
           - cloud::telemetry::alarmnotifier
+          - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::spof
@@ -105,6 +106,7 @@ profiles:
           - cloud::telemetry::collector
           - cloud::telemetry::alarmevaluator
           - cloud::telemetry::alarmnotifier
+          - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::spof
@@ -170,6 +172,7 @@ profiles:
           - cloud::telemetry::collector
           - cloud::telemetry::alarmevaluator
           - cloud::telemetry::alarmnotifier
+          - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::spof
