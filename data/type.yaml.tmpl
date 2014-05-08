@@ -146,6 +146,8 @@ cloud::volume::storage::cinder_backends:
       rbd_pool: volumes
       rbd_user: cinder
       rbd_secret_uuid: "%{hiera('ceph_fsid')}"
+cloud::volume::storage::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::volume::storage::ks_cinder_password: "%{hiera('ks_cinder_password')}"
 
 cloud::volume::api::ks_cinder_password: "%{hiera('ks_cinder_password')}"
 cloud::volume::api::ks_glance_internal_host: "%{hiera('ks_glance_internal_host')}"
