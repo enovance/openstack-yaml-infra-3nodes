@@ -91,6 +91,7 @@ cloud::compute::nova_db_password: "%{hiera('nova_db_password')}"
 cloud::compute::rabbit_hosts: "%{hiera('rabbit_hosts')}"
 cloud::compute::rabbit_password: "%{hiera('rabbit_password')}"
 cloud::compute::ks_glance_internal_host: "%{hiera('ks_glance_internal_host')}"
+cloud::compute::availability_zone: "%{hiera('region')}"
 
 cloud::network::rabbit_hosts: "%{hiera('rabbit_hosts')}"
 cloud::network::rabbit_password: "%{hiera('rabbit_password')}"
