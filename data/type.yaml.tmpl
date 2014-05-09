@@ -164,6 +164,7 @@ cloud::volume::rabbit_hosts: "%{hiera('rabbit_hosts')}"
 cloud::volume::rabbit_password: "%{hiera('rabbit_password')}"
 cloud::volume::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
 cloud::volume::ks_cinder_password: "%{hiera('ks_cinder_password')}"
+cloud::volume::storage_availability_zone: "%{hiera('region')}"
 
 cloud::object::controller::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
 cloud::object::controller::ks_keystone_admin_port: "%{hiera('ks_keystone_admin_port')}"
