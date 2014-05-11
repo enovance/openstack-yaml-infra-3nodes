@@ -1,3 +1,4 @@
+name: 3nodes-fullha
 profiles:
   puppetmaster:
   all-rbdkey:
