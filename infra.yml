@@ -1,7 +1,9 @@
 name: 3nodes-fullha
 profiles:
   puppetmaster:
+    arity: 1
   all-rbdkey:
+    arity: 1
     steps:
       -
         step: 1
@@ -68,6 +70,7 @@ profiles:
       neutron_firewall_driver: neutron_firewall_driver
 
   all-l3:
+    arity: 1
     steps:
       -
         step: 1
@@ -133,6 +136,7 @@ profiles:
       neutron_firewall_driver: neutron_firewall_driver
 
   all-osd:
+    arity: 1
     steps:
       -
         step: 1
