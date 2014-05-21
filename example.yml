@@ -8,8 +8,8 @@ hosts:
     profile: all-rbdkey
     ip: 10.151.68.54
     config:
-      cloud::storage::rbd::osd::public_network: "%{hiera('ceph_public_network')}"
-      cloud::storage::rbd::osd::cluster_network: "%{hiera('ceph_cluster_network')}"
+      cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+      cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
       cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
@@ -20,8 +20,8 @@ hosts:
     profile: all-osd
     ip: 10.151.0.55
     config:
-      cloud::storage::rbd::osd::public_network: "%{hiera('ceph_public_network')}"
-      cloud::storage::rbd::osd::cluster_network: "%{hiera('ceph_cluster_network')}"
+      cloud::storage::rbd::public_network: "%{hiera('ceph_public_network')}"
+      cloud::storage::rbd::cluster_network: "%{hiera('ceph_cluster_network')}"
       cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
