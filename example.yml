@@ -114,7 +114,7 @@ config:
   neutron_type_drivers: gre
   neutron_mechanism_drivers: openvswitch
   neutron_tunnel_id_ranges: 1:10000
-  neutron_firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirew
+  neutron_firewall_driver: neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver
   neutron_metadata_proxy_shared_secret: secrete
       
   ks_nova_password: secrete
