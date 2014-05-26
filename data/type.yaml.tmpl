@@ -27,7 +27,7 @@ cloud::network::l3::external_int: "%{hiera('external_netif')}"
 
 cloud::network::metadata::auth_region: "%{hiera('region')}"
 cloud::network::metadata::ks_neutron_password: "%{hiera('ks_neutron_password')}"
-cloud::network::metadata::neutron_medatadata_proxy_shared_secret: "%{hiera('neutron_medatadata_proxy_shared_secret')}"
+cloud::network::metadata::neutron_metadata_proxy_shared_secret: "%{hiera('neutron_metadata_proxy_shared_secret')}"
 cloud::network::metadata::nova_metadata_server: "%{hiera('vip_public_ip')}"
 cloud::network::metadata::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
 
