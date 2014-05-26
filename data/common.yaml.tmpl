@@ -163,7 +163,7 @@ ks_neutron_admin_host: "%{hiera('vip_admin_fqdn')}"
 ks_neutron_internal_host: "%{hiera('vip_internal_fqdn')}"
 ks_neutron_password: {{ config.ks_neutron_password }}
 ks_neutron_public_host: "%{hiera('vip_public_fqdn')}"
-neutron_medatadata_proxy_shared_secret: {{ config.neutron_medatadata_proxy_shared_secret }}
+neutron_metadata_proxy_shared_secret: {{ config.neutron_metadata_proxy_shared_secret }}
 
 # Swift
 ks_swift_admin_host: "%{hiera('vip_admin_fqdn')}"
