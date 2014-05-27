@@ -216,5 +216,5 @@ serverspec:
   cloud::loadbalancer: lb
   cloud::storage::rbd::osd: storage_node
   cloud::compute::hypervisor: compute
-  cloud::compute::api: compute
+  cloud::compute::api: controller
   cloud::dashboard: dashboard
