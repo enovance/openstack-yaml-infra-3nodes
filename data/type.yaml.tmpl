@@ -166,20 +166,30 @@ cloud::volume::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}
 cloud::volume::ks_cinder_password: "%{hiera('ks_cinder_password')}"
 cloud::volume::storage_availability_zone: "%{hiera('region')}"
 
+cloud::object::swift_hash_suffix: "%{hiera('swift_hash_suffix')}"
+
 cloud::object::controller::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
-cloud::object::controller::ks_keystone_admin_port: "%{hiera('ks_keystone_admin_port')}"
 cloud::object::controller::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
-cloud::object::controller::ks_keystone_internal_port: "%{hiera('ks_keystone_internal_port')}"
 cloud::object::controller::ks_swift_dispersion_password: "%{hiera('ks_swift_dispersion_password')}"
 cloud::object::controller::ks_swift_password: "%{hiera('ks_swift_password')}"
 cloud::object::controller::statsd_host: "%{hiera('statsd_host')}"
 cloud::object::controller::memcache_servers: "%{hiera('memcache_servers')}"
 cloud::object::controller::api_eth: "%{hiera('api_eth')}"
-cloud::object::controller::swift_cors_allow_origin: "http://%{hiera('vip_internal_fqdn')}"
+cloud::object::controller::swift_cors_allow_origin: "%{hiera('swift_cors_allow_origin')}"
 
-cloud::object::swift_hash_suffix: "%{hiera('swift_hash_suffix')}"
 cloud::object::ringbuilder::rsyncd_ipaddress: "%{hiera('internal_netif_ip')}"
 cloud::object::ringbuilder::replicas: "%{hiera('replicas')}"
+cloud::object::ringbuilder::swift_rsync_max_connections: 5
+
+cloud::object::storage::storage_eth: "%{hiera('api_eth')}"
+cloud::object::storage::swift_zone: "%{hiera('swift_zone')}"
+cloud::object::storage::fstype: loopback
+cloud::object::storage::device_config_hash:
+  loop0:
+  loop1:
+  loop2:
+cloud::object::storage::ring_container_device: loop0
+cloud::object::storage::ring_account_device: loop0
 
 cloud::network::controller::neutron_db_host: "%{hiera('neutron_db_host')}"
 cloud::network::controller::neutron_db_password: "%{hiera('neutron_db_password')}"
