@@ -186,8 +186,23 @@ cloud::object::storage::swift_zone: "%{hiera('swift_zone')}"
 cloud::object::storage::fstype: loopback
 cloud::object::storage::device_config_hash:
   loop0:
+    base_dir: /srv/loopback_device
+    mnt_base_dir: /srv/node
+    byte_size: 1024
+    seek: 25000
+    fstype: xfs
   loop1:
+    base_dir: /srv/loopback_device
+    mnt_base_dir: /srv/node
+    byte_size: 1024
+    seek: 25000
+    fstype: xfs
   loop2:
+    base_dir: /srv/loopback_device
+    mnt_base_dir: /srv/node
+    byte_size: 1024
+    seek: 25000
+    fstype: xfs
 cloud::object::storage::ring_container_device: loop0
 cloud::object::storage::ring_account_device: loop0
 
