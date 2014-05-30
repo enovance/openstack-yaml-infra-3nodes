@@ -33,7 +33,7 @@ cloud::network::metadata::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_ho
 
 cloud::network::lbaas::manage_haproxy_pkg: false
 
-cloud::identity::swift_enabled: false
+cloud::identity::swift_enabled: true
 cloud::identity::keystone_db_host: "%{hiera('keystone_db_host')}"
 cloud::identity::keystone_db_password: "%{hiera('keystone_db_password')}"
 cloud::identity::memcache_servers: "%{hiera('memcache_servers')}"
@@ -166,20 +166,44 @@ cloud::volume::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}
 cloud::volume::ks_cinder_password: "%{hiera('ks_cinder_password')}"
 cloud::volume::storage_availability_zone: "%{hiera('region')}"
 
+cloud::object::swift_hash_suffix: "%{hiera('swift_hash_suffix')}"
+
 cloud::object::controller::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
-cloud::object::controller::ks_keystone_admin_port: "%{hiera('ks_keystone_admin_port')}"
 cloud::object::controller::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
-cloud::object::controller::ks_keystone_internal_port: "%{hiera('ks_keystone_internal_port')}"
 cloud::object::controller::ks_swift_dispersion_password: "%{hiera('ks_swift_dispersion_password')}"
 cloud::object::controller::ks_swift_password: "%{hiera('ks_swift_password')}"
 cloud::object::controller::statsd_host: "%{hiera('statsd_host')}"
 cloud::object::controller::memcache_servers: "%{hiera('memcache_servers')}"
 cloud::object::controller::api_eth: "%{hiera('api_eth')}"
-cloud::object::controller::swift_cors_allow_origin: "http://%{hiera('vip_internal_fqdn')}"
+cloud::object::controller::swift_cors_allow_origin: "%{hiera('swift_cors_allow_origin')}"
 
-cloud::object::swift_hash_suffix: "%{hiera('swift_hash_suffix')}"
 cloud::object::ringbuilder::rsyncd_ipaddress: "%{hiera('internal_netif_ip')}"
 cloud::object::ringbuilder::replicas: "%{hiera('replicas')}"
+cloud::object::ringbuilder::swift_rsync_max_connections: 5
+
+cloud::object::storage::storage_eth: "%{hiera('api_eth')}"
+cloud::object::storage::fstype: loopback
+cloud::object::storage::device_config_hash:
+  loop0:
+    base_dir: /srv/loopback_device
+    mnt_base_dir: /srv/node
+    byte_size: 1024
+    seek: 25000
+    fstype: xfs
+  loop1:
+    base_dir: /srv/loopback_device
+    mnt_base_dir: /srv/node
+    byte_size: 1024
+    seek: 25000
+    fstype: xfs
+  loop2:
+    base_dir: /srv/loopback_device
+    mnt_base_dir: /srv/node
+    byte_size: 1024
+    seek: 25000
+    fstype: xfs
+cloud::object::storage::ring_container_device: loop0
+cloud::object::storage::ring_account_device: loop0
 
 cloud::network::controller::neutron_db_host: "%{hiera('neutron_db_host')}"
 cloud::network::controller::neutron_db_password: "%{hiera('neutron_db_password')}"
@@ -245,7 +269,7 @@ cloud::loadbalancer::keepalived_localhost_ip: "%{hiera('internal_netif_ip')}"
 cloud::loadbalancer::galera_ip: "%{hiera('galera_ip')}"
 cloud::loadbalancer::vip_public_ip: "%{hiera('vip_public_ip')}"
 cloud::loadbalancer::haproxy_auth: "%{hiera('haproxy_auth')}"
-cloud::loadbalancer::swift_api: false
+cloud::loadbalancer::swift_api: true
 
 cloud::dashboard::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
 cloud::dashboard::api_eth: "%{hiera('api_eth')}"

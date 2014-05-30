@@ -22,6 +22,7 @@ profiles:
           - cloud::loadbalancer
           - cloud::storage::rbd::osd
           - cloud::dashboard
+          - cloud::object::storage
       -
         step: 3
         roles:
@@ -50,6 +51,8 @@ profiles:
           - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
+          - cloud::object::controller
+          - cloud::object::ringbuilder
           - cloud::spof
       -
         step: 5
@@ -88,6 +91,7 @@ profiles:
         roles:
           - cloud::loadbalancer
           - cloud::dashboard
+          - cloud::object::storage
       -
         step: 3
         roles:
@@ -116,6 +120,7 @@ profiles:
           - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
+          - cloud::object::controller
           - cloud::spof
       -
         step: 5
@@ -156,6 +161,7 @@ profiles:
           - cloud::loadbalancer
           - cloud::storage::rbd::osd
           - cloud::dashboard
+          - cloud::object::storage
       -
         step: 3
         roles:
@@ -184,6 +190,7 @@ profiles:
           - cloud::telemetry::notification
           - cloud::network::controller
           - cloud::orchestration::api
+          - cloud::object::controller
           - cloud::spof
       -
         step: 5
