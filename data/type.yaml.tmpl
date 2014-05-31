@@ -188,7 +188,7 @@ cloud::network::controller::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_
 cloud::network::controller::api_eth: "%{hiera('api_eth')}"
 cloud::network::controller::public_cidr: "%{hiera('public_cidr')}"
 cloud::network::controller::nova_url: "http://%{hiera('vip_internal_fqdn')}:8774/v2"
-cloud::network::controller::nova_admin_auth_url: "http://%{hiera('vip_internal_fqdn')}:5000/v2.0"
+cloud::network::controller::nova_admin_auth_url: "http://%{hiera('vip_internal_fqdn')}:35357/v2.0"
 cloud::network::controller::nova_admin_password: "%{hiera('ks_nova_password')}"
 cloud::network::controller::nova_admin_username: "nova"
 cloud::network::controller::nova_admin_tenant_name: "services"
