@@ -1,16 +1,16 @@
 ---
-{% for host in hosts %}
-{% if profiles[host['profile']]['min_step'] %}
-{% if profiles[host['profile']]['min_step'] <= step %}
-{{ host.name }}.{{ config.domain }}:
-{% if host.ip %}
-  :server_ip: {{ host.ip }}
+{% for hname in hosts %}
+{% if profiles[hosts[hname]['profile']]['min_step'] %}
+{% if profiles[hosts[hname]['profile']]['min_step'] <= step %}
+{{ hname }}.{{ config.domain }}:
+{% if hosts[hname].ip %}
+  :server_ip: {{ hosts[hname].ip }}
 {% endif %}
-  :hostname: {{ host.name }}
+  :hostname: {{ hname }}
   :roles:
     - base
 
-{% for entry in profiles[host['profile']]['steps'] %}
+{% for entry in profiles[hosts[hname]['profile']]['steps'] %}
 {% if entry.step <= step %}
 {% if entry.roles %}
 {% for role in entry.roles %}
@@ -22,9 +22,9 @@
 {% endif %}
 {% endfor %}
 
-{% for config_name in profiles[host['profile']]['serverspec_config'] %}
-{% if config[profiles[host['profile']]['serverspec_config'][config_name]] %}
-  :{{ config_name }}: {{ config[profiles[host['profile']]['serverspec_config'][config_name]] }}
+{% for config_name in profiles[hosts[hname]['profile']]['serverspec_config'] %}
+{% if config[profiles[hosts[hname]['profile']]['serverspec_config'][config_name]] %}
+  :{{ config_name }}: {{ config[profiles[hosts[hname]['profile']]['serverspec_config'][config_name]] }}
 {% endif %}
 {% endfor %}
 

@@ -2,8 +2,10 @@ name: 3nodes-fullha
 profiles:
   puppetmaster:
     arity: 1
+    edeploy: install-server
   all-rbdkey:
     arity: 1
+    edeploy: openstack-full
     steps:
       -
         step: 1
@@ -71,6 +73,7 @@ profiles:
 
   all-l3:
     arity: 1
+    edeploy: openstack-full
     steps:
       -
         step: 1
@@ -137,6 +140,7 @@ profiles:
 
   all-osd:
     arity: 1
+    edeploy: openstack-full
     steps:
       -
         step: 1

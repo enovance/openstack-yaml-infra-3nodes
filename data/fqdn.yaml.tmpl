@@ -1,8 +1,8 @@
 # {{ host }}
-{% for h in hosts %}
-{% if h.name == host %}
-{% for conf in h.config %}
-{{ conf }}: {{ h.config[conf] }}
+{% for hname in hosts %}
+{% if hname == host %}
+{% for conf in hosts[hname].config %}
+{{ conf }}: {{ hosts[hname].config[conf] }}
 {% endfor %}
 {% endif %}
 {% endfor %}

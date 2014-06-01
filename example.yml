@@ -1,10 +1,8 @@
 hosts:
-  -
-    name: install-server
+  install-server:
     profile: puppetmaster
     ip: 10.151.0.48
-  -
-    name: openstack1
+  openstack1:
     profile: all-rbdkey
     ip: 10.151.68.54
     config:
@@ -15,8 +13,7 @@ hosts:
       cloud::loadbalancer::keepalived_priority: 49
       cloud::storage::rbd::pools::setup_pools: true
       cloud::compute::hypervisor::has_ceph: true
-  -
-    name: openstack2
+  openstack2:
     profile: all-osd
     ip: 10.151.0.55
     config:
@@ -26,8 +23,7 @@ hosts:
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
       cloud::compute::hypervisor::has_ceph: true
-  -
-    name: openstack3
+  openstack3:
     profile: all-l3
     ip: 10.151.0.56
     config:
