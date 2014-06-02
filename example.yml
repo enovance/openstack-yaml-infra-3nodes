@@ -13,6 +13,7 @@ hosts:
       cloud::loadbalancer::keepalived_priority: 49
       cloud::storage::rbd::pools::setup_pools: true
       cloud::compute::hypervisor::has_ceph: true
+      cloud::object::storage::swift_zone: 1
   openstack2:
     profile: all-osd
     ip: 10.151.0.55
@@ -23,12 +24,14 @@ hosts:
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
       cloud::compute::hypervisor::has_ceph: true
+      cloud::object::storage::swift_zone: 2
   openstack3:
     profile: all-l3
     ip: 10.151.0.56
     config:
       cloud::loadbalancer::keepalived_state: MASTER
       cloud::loadbalancer::keepalived_priority: 50
+      cloud::object::storage::swift_zone: 3
 
 config:
   domain: ring.enovance.com
@@ -71,7 +74,7 @@ config:
   ks_admin_tenant: admin
   ks_admin_token: secrete
 
-  swift_api: false
+  swift_api: true
   ks_swift_dispersion_password: secrete
   ks_swift_password: secrete
   swift_hash_suffix: ni2aef8ich3oo
