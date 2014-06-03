@@ -24,6 +24,16 @@ resources:
       network_id: { get_resource: {{ config.private_net_name }} }
       cidr: {{ config.public_network }}
       enable_dhcp: true
+
+  vip_port:
+    type: OS::Neutron::Port
+    properties:
+      network_id: { get_resource: {{ config.private_net_name }} }
+      fixed_ips:
+        - subnet_id: { get_resource: private_subnet }
+          ip_address: {{ config.vip_admin_ip }}
+      security_groups: [{ get_resource: mysecgroup }]
+
 {% if floating_network_id %}
   router:
     type: OS::Neutron::Router
@@ -53,6 +63,7 @@ resources:
     type: OS::Neutron::Port
     properties:
       network_id: { get_resource: {{ config.private_net_name }} }
+      allowed_address_pairs: [{"ip_address": {{ config.vip_admin_ip }}}]
       fixed_ips:
         - subnet_id: { get_resource: private_subnet }
           ip_address: {{ hosts[hname].ip }}
