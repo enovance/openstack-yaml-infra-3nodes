@@ -72,14 +72,18 @@ resources:
   {{ hname }}:
     type: OS::Nova::Server
     properties:
-      image: {{ profiles[hosts[hname].profile].edeploy }}
+      image: {{ profiles[hosts[hname].profile].edeploy }}{% if role_version %}-{{ role_version }}{% endif %}
       flavor: {{ config.flavor }}
       networks:
         - port: { get_resource: {{ hname }}_port }
       user_data_format: RAW
       user_data: |
         #cloud-config
-            
+
+        hostname: {{ hname }}
+        fqdn: {{ hname }}.{{ config.domain}}
+        manage_etc_hosts: false
+
         groups:
           - {{ config.remote_user }}
         
@@ -116,7 +120,7 @@ resources:
 outputs:
 {% if floating_network_id %}
   output_public_ip:
-    description: Floating IP address of the puppet master in public network
+    description: Floating IP address of the install server in the public network
     value: { get_attr: [ public_ip, floating_ip_address ] }
 {% endif %}
 # Local variables:
