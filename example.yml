@@ -12,7 +12,6 @@ hosts:
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
       cloud::storage::rbd::pools::setup_pools: true
-      cloud::compute::hypervisor::has_ceph: true
       cloud::object::storage::swift_zone: 1
   openstack2:
     profile: all-osd
@@ -23,7 +22,6 @@ hosts:
       cloud::storage::rbd::osd::devices: "%{hiera('ceph_osd_devices')}"
       cloud::loadbalancer::keepalived_state: BACKUP
       cloud::loadbalancer::keepalived_priority: 49
-      cloud::compute::hypervisor::has_ceph: true
       cloud::object::storage::swift_zone: 2
   openstack3:
     profile: all-l3

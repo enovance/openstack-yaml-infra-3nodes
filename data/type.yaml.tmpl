@@ -80,6 +80,8 @@ cloud::compute::hypervisor::ks_nova_public_host: "%{hiera('ks_nova_public_host')
 cloud::compute::hypervisor::nova_rbd_secret_uuid: "%{hiera('ceph_fsid')}"
 cloud::compute::hypervisor::nova_ssh_private_key: "%{hiera('nova_ssh_private_key')}"
 cloud::compute::hypervisor::nova_ssh_public_key: "%{hiera('nova_ssh_public_key')}"
+cloud::compute::hypervisor::vm_rbd: true
+cloud::compute::hypervisor::volume_rbd: true
 
 cloud::compute::neutron_endpoint: "%{hiera('ks_neutron_internal_host')}"
 cloud::compute::neutron_password: "%{hiera('ks_neutron_password')}"
