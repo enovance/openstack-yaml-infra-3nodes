@@ -73,6 +73,7 @@ profiles:
       neutron_mechanism_drivers: neutron_mechanism_drivers
       neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
       neutron_firewall_driver: neutron_firewall_driver
+      mysql_root_password: mysql_root_password
 
   all-l3:
     arity: 1
@@ -142,6 +143,7 @@ profiles:
       neutron_mechanism_drivers: neutron_mechanism_drivers
       neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
       neutron_firewall_driver: neutron_firewall_driver
+      mysql_root_password: mysql_root_password
 
   all-osd:
     arity: 1
@@ -211,6 +213,7 @@ profiles:
       neutron_mechanism_drivers: neutron_mechanism_drivers
       neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
       neutron_firewall_driver: neutron_firewall_driver
+      mysql_root_password: mysql_root_password
 
 ordered_profiles:
   - all-rbdkey
