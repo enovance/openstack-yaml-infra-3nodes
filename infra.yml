@@ -7,7 +7,7 @@ profiles:
     arity: 1
     edeploy: install-server
   all-without-ceph-osd:
-    arity: 2
+    arity: 1
     edeploy: openstack-full
     steps:
       -
@@ -76,7 +76,7 @@ profiles:
       neutron_firewall_driver: neutron_firewall_driver
 
   all-with-ceph-osd:
-    arity: 1
+    arity: 2
     edeploy: openstack-full
     steps:
       -
