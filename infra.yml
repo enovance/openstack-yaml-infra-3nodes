@@ -60,6 +60,7 @@ profiles:
           - cloud::network::dhcp
           - cloud::network::metadata
           - cloud::network::lbaas
+          - cloud::network::l3
     serverspec_config:
       ks_user_name: ks_admin_tenant
       ks_user_password: ks_admin_password
@@ -198,6 +199,7 @@ profiles:
           - cloud::network::dhcp
           - cloud::network::metadata
           - cloud::network::lbaas
+          - cloud::network::l3
     serverspec_config:
       ks_user_name: ks_admin_tenant
       ks_user_password: ks_admin_password
