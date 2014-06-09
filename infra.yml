@@ -163,3 +163,6 @@ serverspec:
   cloud::compute::hypervisor: compute
   cloud::compute::api: controller
   cloud::dashboard: dashboard
+  cloud::object::ringbuilder: object_ringbuilder
+  cloud::object::controller: object_proxy
+  cloud::object::storage: object_storage
