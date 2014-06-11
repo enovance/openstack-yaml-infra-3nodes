@@ -153,6 +153,7 @@ ks_nova_public_host: "%{hiera('vip_public_fqdn')}"
 neutron_metadata_proxy_shared_secret: {{ config.neutron_metadata_proxy_shared_secret }}
 nova_ssh_public_key: '{{ config.nova_ssh_public_key }}'
 nova_ssh_private_key: '{{ config.nova_ssh_private_key }}'
+libvirt_type: '{{ config.libvirt_type }}'
 
 # Neutron
 neutron_db_allowed_hosts: "%{hiera('db_allowed_hosts')}"
