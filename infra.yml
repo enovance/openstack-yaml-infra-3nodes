@@ -3,7 +3,7 @@
 
 name: 3nodes-fullha
 profiles:
-  puppetmaster:
+  install-server:
     arity: 1
     edeploy: install-server
   openstack-full:
