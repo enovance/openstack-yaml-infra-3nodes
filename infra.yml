@@ -55,6 +55,7 @@ profiles:
           - cloud::network::controller
           - cloud::orchestration::api
           - cloud::object::controller
+          - cloud::object::ringbuilder
           - cloud::spof
       -
         step: 5
