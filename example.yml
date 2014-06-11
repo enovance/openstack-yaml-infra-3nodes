@@ -1,6 +1,6 @@
 hosts:
   install-server:
-    profile: puppetmaster
+    profile: install-server
     ip: 10.151.0.48
   openstack1:
     profile: all-rbdkey

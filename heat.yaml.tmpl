@@ -52,7 +52,7 @@ resources:
 
   public_ip:
     type: OS::Neutron::FloatingIP
-    properties:{% for hname in hosts -%}{% if hosts[hname].profile == 'puppetmaster' %}
+    properties:{% for hname in hosts -%}{% if hosts[hname].profile == 'install-server' %}
       port_id: { get_resource: {{ hname }}_port }
       floating_network_id: {{ floating_network_id }}
 {% endif -%}
@@ -63,7 +63,7 @@ resources:
     type: OS::Neutron::Port
     properties:
       network_id: { get_resource: {{ config.private_net_name }} }
-{% if hosts[hname].profile != 'puppetmaster' %}      allowed_address_pairs:
+{% if hosts[hname].profile != 'install-server' %}      allowed_address_pairs:
         - ip_address: {{ config.vip_admin_ip }}
           mac_address: { get_attr: [vip_port, mac_address] }{% endif %}
       fixed_ips:
@@ -103,7 +103,7 @@ resources:
             permissions: 0440
             content: |
               Defaults:jenkins !requiretty
-{% if hosts[hname].profile != 'puppetmaster' -%}
+{% if hosts[hname].profile != 'install-server' -%}
 {% for dev in config.ceph_osd_devices %}
   {{ hname }}_{{ dev }}:
     type: OS::Cinder::Volume
