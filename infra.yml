@@ -79,6 +79,7 @@ profiles:
         step: 2
         roles:
           - cloud::loadbalancer
+          - cloud::storage::rbd::osd
           - cloud::dashboard
       -
         step: 3
