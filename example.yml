@@ -107,7 +107,7 @@ config:
 
   ks_neutron_password: secrete
   neutron_db_password: secrete
-  ks_neutron_admin_proto: http
+  ks_neutron_admin_proto: https
   neutron_type_drivers: gre
   neutron_mechanism_drivers: openvswitch
   neutron_tunnel_id_ranges: 1:10000
