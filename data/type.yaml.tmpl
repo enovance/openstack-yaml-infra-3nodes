@@ -2,9 +2,9 @@
 {% for prof in profiles %}
 {% if prof == profile %}
 classes:
-{% for entry in profiles[profile]['steps'] %}
-{% if entry.step <= step %}
-{% for role in entry.roles %}
+{% for step_num in profiles[profile]['steps'] %}
+{% if profiles[profile]['steps'][step_num] <= step %}
+{% for role in profiles[profile]['steps'][step_num]['roles'] %}
   - {{ role }}
 {% endfor %}
 {% endif %}

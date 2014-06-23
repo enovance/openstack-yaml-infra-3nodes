@@ -10,8 +10,7 @@ profiles:
     arity: 3
     edeploy: openstack-full
     steps:
-      -
-        step: 1
+      1:
         roles:
           - cloud::database::sql
           - cloud::database::nosql
@@ -19,20 +18,17 @@ profiles:
           - cloud::cache
           - cloud::storage::rbd::monitor
           - cloud::storage::rbd::key
-      -
-        step: 2
+      2:
         roles:
           - cloud::loadbalancer
           - cloud::storage::rbd::osd
           - cloud::dashboard
           - cloud::object::storage
-      -
-        step: 3
+      3:
         roles:
           - cloud::identity
           - cloud::storage::rbd::pools
-      -
-        step: 4
+      4:
         roles:
           - cloud::compute::api
           - cloud::compute::cert
@@ -57,8 +53,7 @@ profiles:
           - cloud::object::controller
           - cloud::object::ringbuilder
           - cloud::spof
-      -
-        step: 5
+      5:
         roles:
           - cloud::network::dhcp
           - cloud::network::metadata
