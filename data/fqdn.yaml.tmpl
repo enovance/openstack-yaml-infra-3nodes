@@ -2,7 +2,7 @@
 {% for hname in hosts %}
 {% if hname == host %}
 {% for conf in hosts[hname].config %}
-{{ conf }}: {{ hosts[hname].config[conf] }}
+{{ conf }}: {% if hosts[hname].config[conf] is string %}"{% endif %}{{ hosts[hname].config[conf] }}{% if hosts[hname].config[conf] is string %}"{% endif %}
 {% endfor %}
 {% endif %}
 {% endfor %}
