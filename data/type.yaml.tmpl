@@ -31,6 +31,7 @@ cloud::network::metadata::neutron_metadata_proxy_shared_secret: "%{hiera('neutro
 cloud::network::metadata::nova_metadata_server: "%{hiera('vip_public_ip')}"
 cloud::network::metadata::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
 cloud::network::metadata::ks_nova_internal_proto: "%{hiera('endpoint_proto')}"
+cloud::network::metadata::ks_keystone_admin_proto: "%{hiera('endpoint_proto')}"
 
 cloud::network::lbaas::manage_haproxy_pkg: false
 
@@ -102,6 +103,7 @@ cloud::identity::ks_swift_public_proto: "%{hiera('endpoint_proto')}"
 
 cloud::compute::hypervisor::server_proxyclient_address: "%{hiera('internal_netif_ip')}"
 cloud::compute::hypervisor::ks_nova_public_host: "%{hiera('ks_nova_public_host')}"
+cloud::compute::hypervisor::ks_nova_public_proto: "%{hiera('endpoint_proto')}"
 cloud::compute::hypervisor::nova_rbd_secret_uuid: "%{hiera('ceph_fsid')}"
 cloud::compute::hypervisor::nova_ssh_private_key: "%{hiera('nova_ssh_private_key')}"
 cloud::compute::hypervisor::nova_ssh_public_key: "%{hiera('nova_ssh_public_key')}"
@@ -110,6 +112,7 @@ cloud::compute::hypervisor::volume_rbd: true
 cloud::compute::hypervisor::libvirt_type: "%{hiera('libvirt_type')}"
 
 cloud::compute::neutron_endpoint: "%{hiera('ks_neutron_internal_host')}"
+cloud::compute::neutron_protocol: "%{hiera('endpoint_proto')}"
 cloud::compute::neutron_password: "%{hiera('ks_neutron_password')}"
 cloud::compute::neutron_region_name: "%{hiera('region')}"
 cloud::compute::memcache_servers: "%{hiera('memcache_servers')}"
@@ -118,6 +121,7 @@ cloud::compute::nova_db_password: "%{hiera('nova_db_password')}"
 cloud::compute::rabbit_hosts: "%{hiera('rabbit_hosts')}"
 cloud::compute::rabbit_password: "%{hiera('rabbit_password')}"
 cloud::compute::ks_glance_internal_host: "%{hiera('ks_glance_internal_host')}"
+cloud::compute::ks_glance_internal_proto: "%{hiera('endpoint_proto')}"
 cloud::compute::availability_zone: "%{hiera('region')}"
 
 cloud::network::rabbit_hosts: "%{hiera('rabbit_hosts')}"
@@ -129,6 +133,7 @@ cloud::telemetry::rabbit_hosts: "%{hiera('rabbit_hosts')}"
 cloud::telemetry::rabbit_password: "%{hiera('rabbit_password')}"
 cloud::telemetry::region: "%{hiera('region')}"
 cloud::telemetry::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::telemetry::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
 cloud::telemetry::ks_ceilometer_password: "%{hiera('ks_ceilometer_password')}"
 cloud::telemetry::ceilometer_secret: "%{hiera('ceilometer_secret')}"
 
@@ -152,11 +157,15 @@ cloud::image::registry::ks_glance_password: "%{hiera('ks_glance_password')}"
 cloud::image::registry::api_eth: "%{hiera('internal_netif_ip')}"
 
 cloud::telemetry::api::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::telemetry::api::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
 cloud::telemetry::api::ks_ceilometer_password: "%{hiera('ks_ceilometer_password')}"
 cloud::telemetry::api::api_eth: "%{hiera('api_eth')}"
 cloud::telemetry::api::mongo_nodes: "%{hiera('mongo_nodes')}"
 
 cloud::orchestration::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::orchestration::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
+cloud::orchestration::ks_keystone_admin_proto: "%{hiera('endpoint_proto')}"
+cloud::orchestration::ks_heat_public_proto: "%{hiera('endpoint_proto')}"
 cloud::orchestration::ks_keystone_admin_host: "%{hiera('ks_keystone_admin_host')}"
 cloud::orchestration::ks_heat_password: "%{hiera('ks_heat_password')}"
 cloud::orchestration::heat_db_host: "%{hiera('heat_db_host')}"
@@ -165,6 +174,7 @@ cloud::orchestration::rabbit_hosts: "%{hiera('rabbit_hosts')}"
 cloud::orchestration::rabbit_password: "%{hiera('rabbit_password')}"
 cloud::orchestration::api::api_eth: "%{hiera('internal_netif_ip')}"
 cloud::orchestration::engine::ks_heat_public_host: "%{hiera('ks_heat_public_host')}"
+cloud::orchestration::engine::ks_heat_public_proto: "%{hiera('endpoint_proto')}"
 cloud::orchestration::engine::ks_heat_password: "%{hiera('ks_heat_password')}"
 cloud::orchestration::engine::auth_encryption_key: "%{hiera('auth_encryption_key')}"
 
@@ -175,11 +185,13 @@ cloud::volume::storage::cinder_backends:
       rbd_user: cinder
       rbd_secret_uuid: "%{hiera('ceph_fsid')}"
 cloud::volume::storage::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::volume::storage::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
 cloud::volume::storage::ks_cinder_password: "%{hiera('ks_cinder_password')}"
 
 cloud::volume::api::ks_cinder_password: "%{hiera('ks_cinder_password')}"
 cloud::volume::api::ks_glance_internal_host: "%{hiera('ks_glance_internal_host')}"
 cloud::volume::api::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::volume::api::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
 cloud::volume::api::api_eth: "%{hiera('internal_netif_ip')}"
 cloud::volume::api::ks_glance_internal_proto: "%{hiera('endpoint_proto')}"
 cloud::volume::api::volume_multi_backend: true
@@ -304,3 +316,4 @@ cloud::loadbalancer::swift_api: true
 cloud::dashboard::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
 cloud::dashboard::api_eth: "%{hiera('api_eth')}"
 cloud::dashboard::keystone_host: "%{hiera('ks_keystone_internal_host')}"
+cloud::dashboard::keystone_proto: "%{hiera('endpoint_proto')}"
