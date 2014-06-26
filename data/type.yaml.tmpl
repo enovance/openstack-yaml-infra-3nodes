@@ -229,28 +229,6 @@ cloud::object::ringbuilder::replicas: "%{hiera('replicas')}"
 cloud::object::ringbuilder::swift_rsync_max_connections: 5
 
 cloud::object::storage::storage_eth: "%{hiera('api_eth')}"
-cloud::object::storage::fstype: loopback
-cloud::object::storage::device_config_hash:
-  loop0:
-    base_dir: /srv/loopback_device
-    mnt_base_dir: /srv/node
-    byte_size: 1024
-    seek: 10000000
-    fstype: xfs
-  loop1:
-    base_dir: /srv/loopback_device
-    mnt_base_dir: /srv/node
-    byte_size: 1024
-    seek: 10000000
-    fstype: xfs
-  loop2:
-    base_dir: /srv/loopback_device
-    mnt_base_dir: /srv/node
-    byte_size: 1024
-    seek: 10000000
-    fstype: xfs
-cloud::object::storage::ring_container_device: loop0
-cloud::object::storage::ring_account_device: loop0
 
 cloud::network::controller::neutron_db_host: "%{hiera('neutron_db_host')}"
 cloud::network::controller::neutron_db_password: "%{hiera('neutron_db_password')}"
