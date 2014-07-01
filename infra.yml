@@ -1,7 +1,7 @@
 # all-without-ceph-osd is for server without enough disks to run Ceph OSD devices
 # otherwise, we should use all-with-ceph-osd
 
-name: 3nodes-fullha
+name: 3nodes
 profiles:
   install-server:
     arity: 1
