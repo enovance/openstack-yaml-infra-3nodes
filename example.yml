@@ -144,3 +144,6 @@ XXXX
   cinder_rbd_user: cinder
 
   libvirt_type: kvm
+
+  syslog_server: install-server
+  syslog_port: 514
