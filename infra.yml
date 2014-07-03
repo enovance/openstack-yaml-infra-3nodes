@@ -18,6 +18,7 @@ profiles:
           - cloud::cache
           - cloud::storage::rbd::monitor
           - cloud::storage::rbd::key
+          - cloud::logging::agent
       2:
         roles:
           - cloud::loadbalancer
@@ -93,3 +94,4 @@ serverspec:
   cloud::object::controller: object_proxy
   cloud::object::storage: object_storage
   cloud::spof: spof
+  cloud::logging::agent: logging_agent
