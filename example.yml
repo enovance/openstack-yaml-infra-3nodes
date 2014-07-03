@@ -2,6 +2,8 @@ hosts:
   install-server:
     profile: install-server
     ip: 10.151.0.48
+    config:
+      cloud::logging::agent::syslog_enable: false
   openstack1:
     profile: all-rbdkey
     ip: 10.151.68.54
