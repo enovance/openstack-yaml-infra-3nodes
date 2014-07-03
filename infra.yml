@@ -81,6 +81,7 @@ profiles:
       neutron_firewall_driver: neutron_firewall_driver
 
 ordered_profiles:
+  - install-server
   - openstack-full
 
 serverspec:
