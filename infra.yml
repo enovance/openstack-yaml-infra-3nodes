@@ -79,6 +79,8 @@ profiles:
       neutron_mechanism_drivers: neutron_mechanism_drivers
       neutron_tunnel_id_ranges: neutron_tunnel_id_ranges
       neutron_firewall_driver: neutron_firewall_driver
+      syslog_server: syslog_server
+      syslog_port: syslog_port
 
 ordered_profiles:
   - install-server
