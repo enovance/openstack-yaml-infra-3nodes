@@ -4,6 +4,7 @@ hosts:
     ip: 10.151.0.48
     config:
       cloud::logging::agent::syslog_enable: false
+      kibana3::manage_ws: false
   openstack1:
     profile: all-rbdkey
     ip: 10.151.68.54

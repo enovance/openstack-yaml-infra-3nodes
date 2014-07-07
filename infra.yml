@@ -6,13 +6,10 @@ profiles:
   install-server:
     arity: 1
     edeploy: install-server
-# (TODO) Spredzy: Since kibana includes
-# apache, but we set apache manually for passenger
-# all the available configuration disapear
-#    steps:
-#      1:
-#        roles:
-#          - cloud::logging::server
+    steps:
+      1:
+        roles:
+          - cloud::logging::server
   openstack-full:
     arity: 3
     edeploy: openstack-full
