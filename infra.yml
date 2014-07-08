@@ -86,6 +86,7 @@ profiles:
       syslog_port: syslog_port
 
 ordered_profiles:
+  - install-server
   - openstack-full
 
 serverspec:
