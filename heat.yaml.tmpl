@@ -3,6 +3,15 @@ heat_template_version: 2013-05-23
 description: >
   3 nodes setup of an OpenStack reference architecture from eNovance
 
+parameters:
+  dist:
+    type: string
+    description: Linux distribution codename
+
+  release:
+    type: string
+    description: Release codename
+
 resources:
   mysecgroup:
     type: OS::Neutron::SecurityGroup
@@ -13,6 +22,18 @@ resources:
         port_range_min: 22,
         port_range_max: 22},
         {remote_ip_prefix: 0.0.0.0/0,
+        protocol: tcp,
+        port_range_min: 8282,
+        port_range_max: 8282},
+        {remote_ip_prefix: {{ config.internal_network }},
+        protocol: tcp,
+        port_range_min: 1,
+        port_range_max: 65535},
+        {remote_ip_prefix: {{ config.internal_network }},
+        protocol: udp,
+        port_range_min: 1,
+        port_range_max: 65535},
+        {remote_ip_prefix: 0.0.0.0/0,
         protocol: icmp}]
 
   {{ config.private_net_name }}:
@@ -22,9 +43,10 @@ resources:
     type: OS::Neutron::Subnet
     properties:
       network_id: { get_resource: {{ config.private_net_name }} }
-      cidr: {{ config.public_network }}
+      cidr: {{ config.internal_network }}
       dns_nameservers: {{ config.dns_ips }}
       enable_dhcp: true
+      allocation_pools: [{"start": {{ config.internal_network_start_ip }}, "end": {{ config.internal_network_end_ip }}}]
 
   vip_port:
     type: OS::Neutron::Port
@@ -75,7 +97,13 @@ resources:
   {{ hname }}:
     type: OS::Nova::Server
     properties:
-      image: {{ profiles[hosts[hname].profile].edeploy }}{% if role_version %}-{{ role_version }}{% endif %}
+      image:
+        str_replace:
+          template: profile-dist-release
+          params:
+            profile: {{ profiles[hosts[hname].profile].edeploy }}
+            dist: { get_param: dist}
+            release: { get_param: release}
       flavor: {{ config.flavor }}
       networks:
         - port: { get_resource: {{ hname }}_port }
@@ -96,6 +124,9 @@ resources:
             primary-group: {{ config.remote_user }}
             sudo: ALL=(ALL) NOPASSWD:ALL
             shell: /bin/bash
+            ssh_keys:
+              rsa_private: |
+                {{ config.jenkins_private_key|indent(16)}}
             ssh-authorized-keys:{% for key in config.ssh_authorized_keys %}
               - {{ key }}{% endfor %}
 
@@ -118,6 +149,19 @@ resources:
       instance_uuid: { get_resource: {{ hname }} }
       mountpoint: /dev/{{ dev }}
 {% endfor -%}
+{% for dev in config.swift_storage_devices %}
+  {{ hname }}_{{ dev }}:
+    type: OS::Cinder::Volume
+    properties:
+      size: {{ config.volume_size }}
+
+  {{ hname }}_{{ dev }}_attachment:
+    type: OS::Cinder::VolumeAttachment
+    properties:
+      volume_id: { get_resource: {{ hname }}_{{ dev }} }
+      instance_uuid: { get_resource: {{ hname }} }
+      mountpoint: /dev/{{ dev }}
+{% endfor -%}
 {% endif -%}
 {% endfor %}
 outputs:
@@ -126,6 +170,7 @@ outputs:
     description: Floating IP address of the install server in the public network
     value: { get_attr: [ public_ip, floating_ip_address ] }
 {% endif %}
+
 # Local variables:
 # mode: yaml
 # End:
