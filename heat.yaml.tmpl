@@ -165,8 +165,9 @@ resources:
 {% endfor -%}
 {% endif -%}
 {% endfor %}
-outputs:
+
 {% if floating_network_id %}
+outputs:
   output_public_ip:
     description: Floating IP address of the install server in the public network
     value: { get_attr: [ public_ip, floating_ip_address ] }
