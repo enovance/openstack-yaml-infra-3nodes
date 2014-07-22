@@ -43,7 +43,7 @@ resources:
     type: OS::Neutron::Subnet
     properties:
       network_id: { get_resource: {{ config.private_net_name }} }
-      cidr: {{ config.private_network }}
+      cidr: {{ config.internal_network }}
       dns_nameservers:{% for dnsip in config.dns_ips %}
         - {{ dnsip }}{% endfor %}
       enable_dhcp: true
