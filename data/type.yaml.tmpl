@@ -1,8 +1,8 @@
 # {{ profile }}
 {% for prof in profiles %}
 {% if prof == profile %}
-classes:
 {% if profiles[profile]['steps'] %}
+classes:
 {% for step_num in profiles[profile]['steps'] %}
 {% if step_num <= step %}
 {% for role in profiles[profile]['steps'][step_num]['roles'] %}
