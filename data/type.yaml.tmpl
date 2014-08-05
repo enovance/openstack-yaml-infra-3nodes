@@ -2,6 +2,7 @@
 {% for prof in profiles %}
 {% if prof == profile %}
 classes:
+{% if profiles[profile]['steps'] %}
 {% for step_num in profiles[profile]['steps'] %}
 {% if step_num <= step %}
 {% for role in profiles[profile]['steps'][step_num]['roles'] %}
@@ -9,6 +10,7 @@ classes:
 {% endfor %}
 {% endif %}
 {% endfor %}
+{% endif %}
 {% endif %}
 {% endfor %}
 
