@@ -6,9 +6,9 @@ profiles:
   install-server:
     arity: 1
     edeploy: install-server
-    steps:
 # Disable logging for now, since it does not work on RH7
 # Will be enabled later
+#    steps:
 #      1:
 #        roles:
 #          - cloud::logging::server
