@@ -315,19 +315,20 @@ cloud::dashboard::keystone_proto: "%{hiera('endpoint_proto')}"
 
 cloud::logging::agent::syslog_enable: true
 
-cloud::database::dbaas::trove_db_host: "%{hiera('trove_db_host')}"
-cloud::database::dbaas::trove_db_password: "%{hiera('trove_db_password')}"
-cloud::database::dbaas::rabbit_hosts: "%{hiera('rabbit_hosts')}"
-cloud::database::dbaas::rabbit_password: "%{hiera('rabbit_password')}"
-cloud::database::dbaas::nova_admin_password: "%{hiera('ks_trove_password')}"
-
-cloud::database::dbaas::api::ks_trove_password: "%{hiera('ks_trove_password')}"
-cloud::database::dbaas::api::api_eth: "%{hiera('api_eth')}"
-cloud::database::dbaas::api::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
-cloud::database::dbaas::api::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
-
-cloud::database::dbaas::conductor::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
-cloud::database::dbaas::conductor::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
-
-cloud::database::dbaas::taskmanager::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
-cloud::database::dbaas::taskmanager::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
+# Experimental
+# cloud::database::dbaas::trove_db_host: "%{hiera('trove_db_host')}"
+# cloud::database::dbaas::trove_db_password: "%{hiera('trove_db_password')}"
+# cloud::database::dbaas::rabbit_hosts: "%{hiera('rabbit_hosts')}"
+# cloud::database::dbaas::rabbit_password: "%{hiera('rabbit_password')}"
+# cloud::database::dbaas::nova_admin_password: "%{hiera('ks_trove_password')}"
+# 
+# cloud::database::dbaas::api::ks_trove_password: "%{hiera('ks_trove_password')}"
+# cloud::database::dbaas::api::api_eth: "%{hiera('api_eth')}"
+# cloud::database::dbaas::api::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+# cloud::database::dbaas::api::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
+# 
+# cloud::database::dbaas::conductor::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+# cloud::database::dbaas::conductor::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
+# 
+# cloud::database::dbaas::taskmanager::ks_keystone_internal_host: "%{hiera('ks_keystone_internal_host')}"
+# cloud::database::dbaas::taskmanager::ks_keystone_internal_proto: "%{hiera('endpoint_proto')}"
