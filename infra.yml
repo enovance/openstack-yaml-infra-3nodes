@@ -6,12 +6,10 @@ profiles:
   install-server:
     arity: 1
     edeploy: install-server
-# Disable logging for now, since it does not work on RH7
-# Will be enabled later
-#    steps:
-#      1:
-#        roles:
-#          - cloud::logging::server
+    steps:
+      1:
+        roles:
+          - cloud::logging::server
   openstack-full:
     arity: 3
     edeploy: openstack-full
@@ -24,9 +22,7 @@ profiles:
           - cloud::cache
           - cloud::storage::rbd::monitor
           - cloud::storage::rbd::key
-# Disable logging for now, since it does not work on RH7
-# Will be enabled later
-#          - cloud::logging::agent
+          - cloud::logging::agent
       2:
         roles:
           - cloud::loadbalancer
