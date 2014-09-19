@@ -58,7 +58,6 @@ profiles:
           - cloud::telemetry::alarmnotifier
           - cloud::telemetry::notification
           - cloud::network::controller
-          - cloud::network::vswitch
           - cloud::orchestration::api
           - cloud::orchestration::engine
           - cloud::object::controller
