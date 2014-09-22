@@ -90,7 +90,7 @@ resources:
     properties:
       network_id: { get_resource: {{ config.private_net_name }} }
 {% if hosts[hname].profile != 'install-server' %}      allowed_address_pairs:
-        - ip_address: {{ config.vip_admin_ip }}
+        - ip_address: {{ config.vip_admin_ip }}{% endif %}
       fixed_ips:
         - subnet_id: { get_resource: private_subnet }
           ip_address: {{ hosts[hname].ip }}
