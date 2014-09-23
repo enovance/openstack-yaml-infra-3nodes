@@ -9,12 +9,19 @@ profiles:
     steps:
       1:
         roles:
+          - cloud::install::puppetmaster
+          - cloud::install::puppetdb_server
+      2:
+        roles:
           - cloud::logging::server
   openstack-full:
     arity: 3
     edeploy: openstack-full
     steps:
       1:
+        roles:
+          - cloud
+      2:
         roles:
           - cloud::database::sql
           - cloud::database::nosql
@@ -23,17 +30,17 @@ profiles:
           - cloud::storage::rbd::monitor
           - cloud::storage::rbd::key
           - cloud::logging::agent
-      2:
+      3:
         roles:
           - cloud::loadbalancer
           - cloud::storage::rbd::osd
           - cloud::dashboard
           - cloud::object::storage
-      3:
+      4:
         roles:
           - cloud::identity
           - cloud::storage::rbd::pools
-      4:
+      5:
         roles:
           - cloud::compute::api
           - cloud::compute::cert
@@ -63,7 +70,7 @@ profiles:
           - cloud::object::controller
           - cloud::object::ringbuilder
           - cloud::spof
-      5:
+      6:
         roles:
           - cloud::network::dhcp
           - cloud::network::metadata
@@ -107,3 +114,5 @@ serverspec:
   cloud::spof: spof
   cloud::logging::agent: logging_agent
   cloud::logging::server: logging_server
+  cloud::install::puppetmaster: puppetmaster
+  cloud::install::puppetdb_server: puppetdb_server

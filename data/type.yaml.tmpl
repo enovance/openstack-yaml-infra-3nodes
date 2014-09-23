@@ -318,6 +318,19 @@ cloud::dashboard::keystone_proto: "%{hiera('endpoint_proto')}"
 
 cloud::logging::agent::syslog_enable: true
 
+
+# Cloud::install
+
+cloud::install::puppetmaster::main_configuration: "%{hiera('puppetmaster_main_configuration')}"
+cloud::install::puppetmaster::agent_configuration: "%{hiera('puppetmaster_agent_configuration')}"
+cloud::install::puppetmaster::master_configuration: "%{hiera('puppetmaster_master_configuration')}"
+cloud::install::puppetmaster::puppetmaster_vhost_configuration: "%{hiera('puppetmaster_vhost_configuration')}"
+cloud::install::puppetmaster::puppetconf_path: "%{hiera('puppetmaster_puppetconf_path')}"
+cloud::install::puppetmaster::puppetdb_enable: "%{hiera('puppetmaster_puppetdb_enable')}"
+cloud::install::puppetmaster::autosign_domains: "%{hiera('puppetmaster_autosign_domains')}"
+
+
+
 # Experimental
 # cloud::database::dbaas::trove_db_host: "%{hiera('trove_db_host')}"
 # cloud::database::dbaas::trove_db_password: "%{hiera('trove_db_password')}"

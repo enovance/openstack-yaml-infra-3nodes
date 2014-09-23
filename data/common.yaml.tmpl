@@ -201,5 +201,51 @@ rsyslog::client::server: {{ config.syslog_server }}
 # HAproxy
 haproxy_auth: {{ config.haproxy_auth }}
 
+# cloud::install
+
+{% if config.puppetmaster_main_configuration %}
+puppetmaster_main_configuration:
+{% for element, conf in config.puppetmaster_main_configuration.iteritems() %}
+  {{ element }}:
+    {% for key, value in conf.iteritems() %}
+      {{ key }}: '{{ value }}'
+    {% endfor %}
+{% endfor %}
+{% endif %}
+{% if config.puppetmaster_agent_configuration %}
+puppetmaster_agent_configuration:
+{% for element, conf in config.puppetmaster_agent_configuration.iteritems() %}
+  {{ element }}:
+    {% for key, value in conf.iteritems() %}
+      {{ key }}: '{{ value }}'
+    {% endfor %}
+{% endfor %}
+{% endif %}
+{% if config.puppetmaster_master_configuration %}
+puppetmaster_master_configuration:
+{% for element, conf in config.puppetmaster_master_configuration.iteritems() %}
+  {{ element }}:
+    {% for key, value in conf.iteritems() %}
+      {{ key }}: '{{ value }}'
+    {% endfor %}
+{% endfor %}
+{% endif %}
+{% if config.puppetmaster_vhost_configuration %}
+puppetmaster_vhost_configuration:
+{% for vhost, conf in config.puppetmaster_vhost_configuration.iteritems() %}
+  {{ vhost }}:
+    {% for key, value in conf.iteritems() %}
+      {{ key }}: '{{ value }}'
+    {% endfor %}
+{% endfor %}
+{% endif %}
+puppetmaster_puppetconf_path: {{ config.puppetmaster_puppetconf_path | default('/etc/puppet/puppet.conf') }}
+puppetmaster_puppetdb_enable: {{ config.puppetmaster_puppetdb_enable | default('true') }}
+{% if config.puppetmaster_autosign_domains %}
+puppetmaster_autosign_domains:
+{% for domain in config.puppetmaster_autosign_domains %} - {{ domain }}
+{% endfor %}
+{% endif %}
+
 classes:
   - cloud
