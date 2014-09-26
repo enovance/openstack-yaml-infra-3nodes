@@ -7,7 +7,7 @@ hosts:
       cloud::logging::agent::syslog_enable: false
       kibana3::manage_ws: false
   openstack1:
-    profile: all-rbdkey
+    profile: openstack-full
     ip: 10.151.68.54
     config:
       cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
@@ -21,7 +21,7 @@ hosts:
       cloud::storage::rbd::key::enabled: true
       cloud::object::storage::swift_zone: 1
   openstack2:
-    profile: all-osd
+    profile: openstack-full
     ip: 10.151.0.55
     config:
       cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
@@ -33,7 +33,7 @@ hosts:
       cloud::loadbalancer::keepalived_priority: 49
       cloud::object::storage::swift_zone: 2
   openstack3:
-    profile: all-l3
+    profile: openstack-full
     ip: 10.151.0.56
     config:
       cloud::storage::rbd::osd::public_address: "%{hiera('public_netif_ip')}"
