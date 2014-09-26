@@ -69,6 +69,11 @@ config:
   lb_internal_netif: eth0
   external_netif: eth1
 
+  public_netif_ip: "%{::ipaddress_eth0}"
+  internal_netif_ip: "%{::ipaddress_eth0}"
+  admin_netif_ip: "%{::ipaddress_eth0}"
+  storage_netif_ip: "%{::ipaddress_eth0}"
+
   keystone_db_user: keystone
   keystone_db_password: secrete
   ks_admin_email: dev@enovance.com
