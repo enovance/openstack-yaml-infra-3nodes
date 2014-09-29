@@ -24,7 +24,6 @@ profiles:
           - cloud::storage::rbd::monitor
           - cloud::storage::rbd::key
           - cloud::logging::agent
-          - cloud::monitoring::agent::sensu
       2:
         roles:
           - cloud::loadbalancer
@@ -35,6 +34,7 @@ profiles:
         roles:
           - cloud::identity
           - cloud::storage::rbd::pools
+          - cloud::monitoring::agent::sensu
       4:
         roles:
           - cloud::compute::api
