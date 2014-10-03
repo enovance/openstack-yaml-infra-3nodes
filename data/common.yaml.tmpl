@@ -124,6 +124,7 @@ ceph_public_network: "%{hiera('public_network')}"
 ceph_cluster_network: "%{hiera('storage_network')}"
 ceph_fsid: {{ config.ceph_fsid }}
 ceph_mon_secret: {{ config.ceph_mon_secret }}
+ceph_osd_journal: {{ config.ceph_osd_journal }}
 ceph_osd_devices:
 {% for disk in config.ceph_osd_devices %}  - {{ disk }}
 {% endfor %}
