@@ -125,9 +125,9 @@ ceph_cluster_network: "%{hiera('storage_network')}"
 ceph_fsid: {{ config.ceph_fsid }}
 ceph_mon_secret: {{ config.ceph_mon_secret }}
 ceph_osd_devices:
-{% if mapping(config.ceph_osd_devices) %}
-{% for disk in config.ceph_osd_devices %}  {{ disk }}{%  if defined(disk.journal) %}:
-    {{ disk.journal }}
+{% if config.ceph_osd_devices is mapping %}
+{% for disk in config.ceph_osd_devices %}  {{ disk }}{%  if disk.journal is defined %}:
+{{ disk.journal }}
 {% endif %}
 {% endfor %}
 {% else %}
@@ -161,7 +161,7 @@ ks_nova_internal_host: "%{hiera('vip_internal_fqdn')}"
 ks_nova_public_host: "%{hiera('vip_public_fqdn')}"
 nova_ssh_public_key: '{{ config.nova_ssh_public_key }}'
 nova_ssh_private_key: |
-  {{ config.nova_ssh_private_key.split('\n')|join("\n  ") }}
+{{ config.nova_ssh_private_key.split('\n')|join("\n  ") }}
 libvirt_type: '{{ config.libvirt_type }}'
 
 # Neutron
@@ -209,4 +209,4 @@ rsyslog::client::server: {{ config.syslog_server }}
 haproxy_auth: {{ config.haproxy_auth }}
 
 classes:
-  - cloud
+- cloud
