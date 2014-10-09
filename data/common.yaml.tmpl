@@ -256,7 +256,6 @@ cinder_bind_options: "%{hiera('haproxy_default_bind_options')}"
 
 cinder_port: {{ config.cinder_port | default('8776') }}
 
-cinder_backends: {{ config.cinder_backends | default('') }}
 cinder_rbd_user: {{ config.cinder_rbd_user | default('cinder') }}
 cinder_rbd_pool: {{ config.cinder_rbd_pool | default('volumes') }}
 cinder_rbd_secret_uuid: {{ config.cinder_rbd_secret_uuid | default('') }}
@@ -286,7 +285,20 @@ cinder_db_user: {{ config.cinder_db_user | default('cinder') }}
 cinder_db_password: {{ config.cinder_db_password | default('cinderpassword') }}
 
 cinder_endpoint_type: {{ config.cinder_endpoint_type | default('"%{hiera(\'endpoint_type\')}"') }}
-volume_cinder_backends: {{ config.volume_cinder_backends | default('') }}
+{% if config.volume_cinder_backends %}
+volume_cinder_backends:
+{% for backend, desc in config.volume_cinder_backends.iteritems() %}
+  {{ backend }}:
+  {% for type, spec in config.desc.iteritems() %}
+    {{ type }}:
+    {% for key, value in spec.iteritems() %}
+      {{ key }}: {{ value }}
+    {% endfor %}
+  {% endfor %}
+{% endfor %}
+{% else %}
+volume_cinder_backends: {}
+{% endif %}
 
 # Heat
 heat_verbose: {{ config.heat_verbose | default('"%{hiera(\'verbose\')}"') }}
