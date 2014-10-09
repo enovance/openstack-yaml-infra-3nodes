@@ -465,6 +465,7 @@ ceph_osd_devices:
 {% for disk in config.ceph_osd_devices %}  - {{ disk }}
 {% endfor %}
 {% endif %}
+{% endif %}
 ceph_names:
 {% for hname in hosts %}{% if hosts[hname].profile != 'install-server' %}  - {{ hname }}{% endif %}
 {% endfor %}
