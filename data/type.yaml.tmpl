@@ -311,7 +311,7 @@ cloud::loadbalancer::galera_slave: "%{hiera('galera_slave')}"
 #
 # cloud::messaging
 #
-cloud::messaging::cluster_node_type: disc
+cloud::messaging::cluster_node_type: "%{hiera('rabbit_cluster_node_type')}"
 cloud::messaging::rabbit_names: "%{hiera('rabbit_names')}"
 cloud::messaging::rabbit_password: "%{hiera('rabbit_password')}"
 
