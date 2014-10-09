@@ -289,7 +289,7 @@ cinder_endpoint_type: {{ config.cinder_endpoint_type | default('"%{hiera(\'endpo
 volume_cinder_backends:
 {% for backend, desc in config.volume_cinder_backends.iteritems() %}
   {{ backend }}:
-  {% for type, spec in config.desc.iteritems() %}
+  {% for type, spec in desc.iteritems() %}
     {{ type }}:
     {% for key, value in spec.iteritems() %}
       {{ key }}: {{ value }}
